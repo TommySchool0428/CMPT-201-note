@@ -1,0 +1,33 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[]) {
+  char *line = NULL;
+  size_t len = 0;
+  printf("Please enter some text:");
+  ssize_t nread = getline(&line, &len, stdin);
+  char *str1, *str2, *token, *subtoken;
+  char *savedptr1, *savedptr2;
+  int j;
+
+  if (nread == -1) {
+    perror("getline failed");
+    exit(EXIT_FAILURE);
+  }
+
+  printf("Tokens: \n");
+  for (j = 1, str1 = argv[1]; ;j++, str1 = NULL) {
+    token = strtok_r(str1, argv[2], &savedptr1);
+    if (token == NULL) break;
+    printf("%d: %s\n", j, token);
+    for (str2 = token; ; str2 = NULL) {
+      subtoken = strtok_r(str2, argv[3], &savedptr2);
+      if (subtoken == NULL) break;
+      printf("\t %s\n", subtoken);
+    }
+  }
+  free(line);
+  exit(EXIT_SUCCESS);
+}
