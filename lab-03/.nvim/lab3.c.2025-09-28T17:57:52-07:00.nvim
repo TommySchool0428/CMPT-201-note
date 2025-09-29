@@ -1,0 +1,65 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+
+char *history_array[5];
+
+char *get_input();
+void add_history(char *input, int *history_index);
+void print_history(int history_index);
+
+int main() {
+  bool turn_flag = true;
+  int history_index = 0;
+  while (turn_flag) {
+    printf("Enter input: ");
+    char *input = get_input();          // get input from the user
+    add_history(input, &history_index); // update the history
+    history_index++;
+    // if user input print, it prints the current stored history
+    if (strcmp(input, "print") == 0) {
+      print_history(history_index);
+    }
+    // if the user input exit, terminate the program
+    else if (strcmp(input, "exit") == 0) {
+      turn_flag = false;
+    }
+  }
+  return 0;
+}
+
+char *get_input() {
+  char *buffer = NULL;
+  size_t buffer_size = 0;
+  size_t length = getline(&buffer, &buffer_size, stdin);
+  if (length <= 0) {
+    free(buffer);
+    return NULL;
+  }
+  // remove newline character at the end of the input
+  buffer[length - 1] = '\0';
+  return buffer;
+}
+
+void add_history(char *input, int *history_index) {
+  // if the user add up more than array can hold, remove the oldest history
+  if (*history_index >= 5) {
+    free(history_array[0]);
+    for (int i = 0; i < *history_index - 1; i++) {
+      history_array[i] = history_array[i + 1];
+    }
+    (*history_index)--;
+  }
+  // if it is still in the cap, add the history
+  history_array[*history_index] = input;
+  (*history_index)++;
+}
+
+void print_history(int history_index) {
+  for (int i = 0; i < history_index; i++) {
+    printf("%s\n", history_array[i]);
+  }
+}
