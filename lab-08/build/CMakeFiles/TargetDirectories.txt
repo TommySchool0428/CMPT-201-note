@@ -1,0 +1,3 @@
+/home/tommy3266/cmpt201/CMPT-201-note/lab-08/build/CMakeFiles/main.dir
+/home/tommy3266/cmpt201/CMPT-201-note/lab-08/build/CMakeFiles/edit_cache.dir
+/home/tommy3266/cmpt201/CMPT-201-note/lab-08/build/CMakeFiles/rebuild_cache.dir
