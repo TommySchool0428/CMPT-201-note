@@ -1,4 +1,4 @@
-#/*
+/*
 Questions to answer at top of client.c:
 (You should not need to change the code in client.c)
 1. What is the address of the server it is trying to connect to (IP address and port number).
