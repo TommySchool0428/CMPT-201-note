@@ -1,0 +1,4 @@
+/home/tommy/project/CMPT-201-note/lab-09/build/CMakeFiles/server.dir
+/home/tommy/project/CMPT-201-note/lab-09/build/CMakeFiles/client.dir
+/home/tommy/project/CMPT-201-note/lab-09/build/CMakeFiles/edit_cache.dir
+/home/tommy/project/CMPT-201-note/lab-09/build/CMakeFiles/rebuild_cache.dir
