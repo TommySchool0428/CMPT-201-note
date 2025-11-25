@@ -1,10 +1,3 @@
-/* Simple group chat server for A11
- * Usage: ./server <port> <# of clients>
- *
- * Non-blocking server using select() and per-client outgoing buffers
- * to avoid blocking during broadcasts under load.
- */
-
 #include "../include/common.h"
 #include <stdio.h>
 #include <stdlib.h>
