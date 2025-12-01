@@ -113,9 +113,6 @@ int verify(const char *message_path, const char *sign_path, EVP_PKEY *pubkey) {
   unsigned char message[MAX_FILE_SIZE];
   unsigned char signature[MAX_FILE_SIZE];
 
-  // TODO: Check if the message is authentic using the signature.
-  // Look at: https://wiki.openssl.org/index.php/EVP_Signing_and_Verifying
-
   /* Read message and signature files into buffers */
   size_t message_len = read_all_bytes(message_path, message, MAX_FILE_SIZE);
   size_t sig_len = read_all_bytes(sign_path, signature, MAX_FILE_SIZE);
